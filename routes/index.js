@@ -11,10 +11,7 @@ function getRandom(max) {
 }
 
 function mostPopular(artists, data) {
-  if (artists[0].popularity === artists[1].popularity) {
-    artists[0] = newArtist(data);
-    return mostPopular(artists, data);
-  } else if (artists[0].popularity > artists[1].popularity) {
+  if (artists[0].popularity > artists[1].popularity) {
     return artists[0];
   } else {
     return artists[1];
