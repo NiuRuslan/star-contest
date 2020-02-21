@@ -12,7 +12,7 @@ body {
   /* Location of the image */
   
   /* Background image is centered vertically and horizontally at all times */
-  background-position: top center;
+  background-position: center center;
   
   /* Background image doesn't tile */
   background-repeat: no-repeat;
