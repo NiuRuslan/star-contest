@@ -36,10 +36,10 @@ document.body
         document.body.querySelector('#points').innerText = res[2];
         document.body.querySelector(
           '#artist1',
-        ).innerHTML = `<img src="${res[0].images[1].url}" alt="${res[0].name}" class="responsive-img pulse">`;
+        ).innerHTML = `<img src="${res[0].images[1].url}" alt="${res[0].name}" class="responsive-img pulsing">`;
         document.body.querySelector(
           '#artist2',
-        ).innerHTML = `<img src="${res[1].images[1].url}" alt="${res[1].name}" class="responsive-img pulse">`;
+        ).innerHTML = `<img src="${res[1].images[1].url}" alt="${res[1].name}" class="responsive-img pulsing">`;
         document.body.querySelector('#artist1name').innerText = `${res[0].name}`;
         document.body.querySelector('#artist2name').innerText = `${res[1].name}`;
       }

@@ -7,24 +7,23 @@ a {
   color: #00B7FF;
 } */
 
-
 body {
   /* Location of the image */
-  
+
   /* Background image is centered vertically and horizontally at all times */
   background-position: center center;
-  
+
   /* Background image doesn't tile */
   background-repeat: no-repeat;
-  
+
   /* Background image is fixed in the viewport so that it doesn't move when 
      the content's height is greater than the image's height */
   background-attachment: fixed;
-  
+
   /* This is what makes the background image rescale based
      on the container's size */
   background-size: cover;
-  
+
   /* Set a background color that will be displayed
      while the background image is loading */
   background-color: #000000;
@@ -35,6 +34,7 @@ h1 {
 }
 
 h1,
+h2,
 h4,
 h5,
 h6 {
@@ -42,12 +42,11 @@ h6 {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
 
-
 .zero-margin-left {
   margin-left: 0;
 }
 
-.pulse {
+.pulsing {
   display: block;
   border-radius: 50%;
   background: #ffffff;
@@ -55,19 +54,55 @@ h6 {
   box-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
   animation: none;
 }
-.pulse:hover {
-  animation: pulse 2s infinite;
+.pulsing:hover {
+  animation: pulsing 2s infinite;
 }
 
-a, a:visited {
+.inline {
+  display: inline;
+}
+
+.pulsingpop {
+  display: block;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 0 rgba(255, 255, 255, 0.4);
+  animation: pulsing 2s infinite;
+}
+
+.again {
+  animation-duration: 3s;
+  animation-delay: 1s;
+}
+
+.again:hover {
+  animation: flash 2s infinite
+}
+
+a,
+a:visited {
   color: #e3f2fd;
 }
 
-a:hover {
-  animation: pulse 2s infinite;
+/* a:hover {
+  animation: pulsing 2s infinite;
+} */
+
+.twitter {
+  animation-duration: 3s;
+  animation-delay: 2s;
 }
 
-@-webkit-keyframes pulse {
+.twitter:hover {
+  animation: pulse 1s infinite
+}
+
+.result:hover {
+  
+  animation: tada 2s
+}
+
+@-webkit-keyframes pulsing {
   0% {
     -webkit-box-shadow: 0 0 0 0 #e3f2fd66;
   }
@@ -78,7 +113,7 @@ a:hover {
     -webkit-box-shadow: 0 0 0 0 #e3f2fd00;
   }
 }
-@keyframes pulse {
+@keyframes pulsing {
   0% {
     -moz-box-shadow: 0 0 0 0 #e3f2fd66;
     box-shadow: 0 0 0 0 #e3f2fd66;

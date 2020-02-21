@@ -1,8 +1,22 @@
-<h1 class="center-align">{{title}}</h1>
-<h4>Which one is more popular?</h4>
-<h6>Based on Spotify's latest play counts</h6>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<div class="row valign-wrapper artists" style="margin-top: 10vh;">
+<h1 class="center-align">{{title}}</h1>
+<div class="row valign-wrapper">
+  <div class="col s12 m12 l4"></div>
+  <div class="col s12 m12 l4" style="justify-content: center; display: flex;">
+    <img src="{{photo}}" alt="{{popstar}}" class="responsive-img pulsingpop">
+  </div>
+  <div class="col s12 m12 l4"></div>
+</div>
+
+
+<h4>{{popstar}}</h4>
+<h6 class="inline"> with </h6>
+<h5 class="inline" style="padding: 0 5px;">{{followers}} </h5>
+<h6 class="inline">followers </h6>
+<h6> is more popular on Spotify</h6>
+
+<div class="row valign-wrapper artists">
   <div class="col s0 m0 l3"></div>
   <div class="col s12 m12 l2 center-align" style="margin: 0 5vw;">
     <div class="circle align-center" id="artist1">
@@ -18,18 +32,17 @@
 <div class="row valign-wrapper">
   <div class="col s0 m0 l4"></div>
   <div class="col s12 m12 l4" style="margin: 0 5vw">
-    <h4>Your result: <span id="points">{{points}}</span></h4>
+    <h2 class="result">Your result: <span id="points">{{points}}</span></h2>
+    <h4 class="animated flash again"><a href="/">Try again</a></h4>
   </div>
   <div class="col s0 m0 l4"></div>
 </div>
-
 <div class="row valign-wrapper">
   <div class="col s0 m0 l4"></div>
-  <div class="col s12 m12 l4" style="margin: 0 5vw">
-    <h5><a href="/">Try again</a></h5>
-    
-    <p><a href="https://twitter.com/intent/tweet?text=Try%20yourself%20at%20Star%20Contest%21%20My%20record%20is%20{{points}}%20points%21">
-       <img src="/images/twitter.png" width="48" alt="tweet"> </a>
+  <div class="col s12 m12 l4">
+    <p class="animated heartBeat twitter"><a
+        href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fstar-contest.herokuapp.com%2F&via=epic_smile&text=Try%20yourself%20at%20Star%20Contest%21%20My%20record%20is%20{{points}}%20points%21&hashtags=music%2Cgame%2Cweb%2Cspotify%2Cnasa%2Cstars">
+        <img src="/images/twitter.png" width="48" alt="tweet"> </a>
     </p>
   </div>
   <div class="col s0 m0 l4"></div>
