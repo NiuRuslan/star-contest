@@ -1,20 +1,18 @@
-const apiUrl = 'https://api.nasa.gov/planetary/apod?api_key=mKFduuIgKpeVqZWZXXwRUAj9jS5TpGjIaV4oK5u8';
+// fetch(apiUrl)
+//   .then((data) => {
+//     if (data.ok) {
+//       return data.json();
+//     }
+//     throw new Error('Response not ok.');
+//   })
+//   .then((POD) => generateHtml(POD))
+//   .catch((error) => console.error('Error:', error));
 
-fetch(apiUrl)
-  .then((data) => {
-    if (data.ok) {
-      return data.json();
-    }
-    throw new Error('Response not ok.');
-  })
-  .then((POD) => generateHtml(POD))
-  .catch((error) => console.error('Error:', error));
-
-const generateHtml = (data) => {
-  console.log(data);
-  // document.body.style = `background: url(${data.hdurl}) #fff no-repeat cover`;
-  document.body.style = `background-image: url(${data.hdurl})`;
-};
+// const generateHtml = (data) => {
+//   console.log(data);
+//   // document.body.style = `background: url(${data.hdurl}) #fff no-repeat cover`;
+//   document.body.style = `background-image: url(${data.hdurl})`;
+// };
 
 document.body
   .querySelector('.artists')

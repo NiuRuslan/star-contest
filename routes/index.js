@@ -32,6 +32,11 @@ function newRound(data) {
 
 
 router.get('/', async (req, res, next) => {
+  request(process.env.NASAURL, async (error, response, body) => {
+    const result = await JSON.parse(body);
+    req.app.locals.background = result.hdurl;
+  });
+
   req.app.locals.points = 0;
 
   const data = req.app.locals.data || await Artist.find();
@@ -64,7 +69,7 @@ router.post('/', (req, res, next) => {
 });
 
 router.get('/gameover', (req, res, next) => {
-  console.log(req.app.locals.points)
+  console.log(req.app.locals.points);
   res.render('gameover');
 });
 

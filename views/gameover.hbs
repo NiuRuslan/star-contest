@@ -27,10 +27,9 @@
   <div class="col s0 m0 l4"></div>
   <div class="col s12 m12 l4" style="margin: 0 5vw">
     <h5><a href="/">Try again</a></h5>
-    <p><a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=Hello%20world"
-  data-size="large">
-Tweet</a>
+    
+    <p><a href="https://twitter.com/intent/tweet?text=Try%20yourself%20at%20Star%20Contest%21%20My%20record%20is%20{{points}}%20points%21">
+       <img src="https://www.iconsdb.com/icons/preview/white/twitter-xxl.png" width="48" alt="tweet"> </a>
     </p>
   </div>
   <div class="col s0 m0 l4"></div>
@@ -38,19 +37,19 @@ Tweet</a>
 
 <script src="javascripts/script.js"></script>
 
-<script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
+<script>window.twttr = (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
+    t._e = [];
+    t.ready = function (f) {
+      t._e.push(f);
+    };
 
-  return t;
-}(document, "script", "twitter-wjs"));</script>
+    return t;
+  }(document, "script", "twitter-wjs"));</script>
