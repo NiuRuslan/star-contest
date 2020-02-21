@@ -1,0 +1,39 @@
+<h1 class="center-align">{{title}}</h1>
+<h4>Which one is more popular?</h4>
+<h6>Based on Spotify's latest play counts</h6>
+
+<div class="row valign-wrapper artists" style="margin-top: 10vh;">
+  <div class="col s0 m0 l3"></div>
+  <div class="col s12 m12 l2 center-align" style="margin: 0 5vw;">
+    <div class="circle align-center" id="artist1">
+      <img src="{{artist1.image}}" alt="{{artist1.name}}" class="responsive-img pulse">
+    </div>
+  </div>
+  <div class="col s12 m12 l2" style="margin: 0 5vw;">
+    <div class="circle align-center" id="artist2">
+      <img src="{{artist2.image}}" alt="{{artist2.name}}" class="responsive-img pulse">
+    </div>
+  </div>
+  <div class="col s0 m0 l3"></div>
+</div>
+
+<div class="row valign-wrapper">
+  <div class="col s0 m0 l3"></div>
+  <div class="col s12 m12 l2" style="margin: 0 5vw">
+    <h5 id="artist1name">{{artist1.name}}</h5>
+  </div>
+  <div class="col s12 m12 l2" style="margin: 0 5vw">
+    <h5 id="artist2name">{{artist2.name}}</h5>
+  </div>
+  <div class="col s0 m0 l3"></div>
+</div>
+
+<div class="row valign-wrapper">
+  <div class="col s0 m0 l4"></div>
+  <div class="col s12 m12 l4" style="margin: 0 5vw">
+    <h5>Points: <span id="points">{{points}}</span></h5>
+  </div>
+  <div class="col s0 m0 l4"></div>
+</div>
+
+<script src="javascripts/script.js"></script>

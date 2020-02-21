@@ -1,0 +1,56 @@
+<h1 class="center-align">{{title}}</h1>
+<h4>Which one is more popular?</h4>
+<h6>Based on Spotify's latest play counts</h6>
+
+<div class="row valign-wrapper artists" style="margin-top: 10vh;">
+  <div class="col s0 m0 l3"></div>
+  <div class="col s12 m12 l2 center-align" style="margin: 0 5vw;">
+    <div class="circle align-center" id="artist1">
+    </div>
+  </div>
+  <div class="col s12 m12 l2" style="margin: 0 5vw;">
+    <div class="circle align-center" id="artist2">
+    </div>
+  </div>
+  <div class="col s0 m0 l3"></div>
+</div>
+
+<div class="row valign-wrapper">
+  <div class="col s0 m0 l4"></div>
+  <div class="col s12 m12 l4" style="margin: 0 5vw">
+    <h4>Your result: <span id="points">{{points}}</span></h4>
+  </div>
+  <div class="col s0 m0 l4"></div>
+</div>
+
+<div class="row valign-wrapper">
+  <div class="col s0 m0 l4"></div>
+  <div class="col s12 m12 l4" style="margin: 0 5vw">
+    <h5><a href="/">Try again</a></h5>
+    <p><a class="twitter-share-button"
+  href="https://twitter.com/intent/tweet?text=Hello%20world"
+  data-size="large">
+Tweet</a>
+    </p>
+  </div>
+  <div class="col s0 m0 l4"></div>
+</div>
+
+<script src="javascripts/script.js"></script>
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
