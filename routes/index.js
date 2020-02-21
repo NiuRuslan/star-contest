@@ -4,7 +4,7 @@ const request = require('request');
 const mongoose = require('mongoose');
 const Artist = require('../models/artists');
 
-mongoose.connect('mongodb://localhost:27017/SpotifyGame', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-bajz8.mongodb.net/starcontest?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 function getRandom(max) {
   return Math.floor(Math.random() * Math.floor(max));
