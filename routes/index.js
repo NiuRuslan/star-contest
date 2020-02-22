@@ -38,7 +38,7 @@ function newRound(data) {
 router.get('/', async (req, res, next) => {
   request(process.env.NASAURL, async (error, response, body) => {
     const result = await JSON.parse(body);
-    req.app.locals.background = result.hdurl;
+    req.app.locals.background = result.url;
   });
 
   req.app.locals.points = 0;

@@ -1,12 +1,3 @@
-/* body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-} */
-
 body {
   /* Location of the image */
 
@@ -76,7 +67,7 @@ h6 {
 }
 
 .again:hover {
-  animation: flash 2s infinite
+  animation: flash 2s infinite;
 }
 
 a,
@@ -94,12 +85,11 @@ a:visited {
 }
 
 .twitter:hover {
-  animation: pulse 1s infinite
+  animation: pulse 1s infinite;
 }
 
 .result:hover {
-  
-  animation: tada 2s
+  animation: tada 2s;
 }
 
 @-webkit-keyframes pulsing {
@@ -125,5 +115,22 @@ a:visited {
   100% {
     -moz-box-shadow: 0 0 0 0 #e3f2fd00;
     box-shadow: 0 0 0 0 #e3f2fd00;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  h1 {
+    margin: 0.2rem;
+    font-size: xxx-large;
+  }
+
+  .artists {
+    margin: 0;
+  }
+  h2 {
+    font-size: xx-large;
+  }
+  h4 {
+    font-size: x-large;
   }
 }
