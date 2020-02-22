@@ -1,6 +1,10 @@
+html {
+   height: 100%;
+ }  
+
 body {
   /* Location of the image */
-
+  height: 100%;
   /* Background image is centered vertically and horizontally at all times */
   background-position: center center;
 
