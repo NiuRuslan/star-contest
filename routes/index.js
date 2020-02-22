@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const request = require('request');
 
 const mongoose = require('mongoose');
 const Artist = require('../models/artists');
@@ -32,10 +31,6 @@ function newRound(data) {
 
 
 router.get('/', async (req, res, next) => {
-  request(process.env.NASAURL, async (error, response, body) => {
-    const result = await JSON.parse(body);
-    req.app.locals.background = result.url;
-  });
 
   req.app.locals.points = 0;
 

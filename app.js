@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const request = require('request');
 
 require('dotenv').config();
 
@@ -22,6 +23,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.locals.title = 'Star Contest';
+
+request(process.env.NASAURL, async (error, response, body) => {
+  const result = await JSON.parse(body);
+  app.locals.background = result.url;
+});
 
 app.use('/', indexRouter);
 
