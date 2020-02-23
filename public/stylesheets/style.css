@@ -23,10 +23,6 @@ body {
   background-color: #000000;
 }
 
-div {
-  outline: none;
-}
-
 h1,
 h2,
 h4,
@@ -141,4 +137,8 @@ a:visited {
   h4 {
     font-size: x-large;
   }
+}
+
+div:focus, img:focus {
+  outline: none;
 }
