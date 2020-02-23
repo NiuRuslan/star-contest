@@ -26,6 +26,10 @@ app.locals.title = 'Star Contest';
 
 request(process.env.NASAURL, async (error, response, body) => {
   const result = await JSON.parse(body);
+  if (result.media_type === 'video') {
+    app.locals.background = 'https://apod.nasa.gov/apod/image/1805/NGC1532Meunier1024.jpg';
+    return;
+  }
   app.locals.background = result.url;
 });
 

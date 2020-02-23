@@ -1,10 +1,6 @@
-html {
-   height: 100%;
- }  
-
 body {
   /* Location of the image */
-  height: 100%;
+
   /* Background image is centered vertically and horizontally at all times */
   background-position: center center;
 
@@ -14,22 +10,21 @@ body {
   /* Background image is fixed in the viewport so that it doesn't move when 
   the content's height is greater than the image's height */
   background-attachment: fixed;
-  
+
   /* This is what makes the background image rescale based
   on the container's size */
-  -webkit-background-size: cover ;
-  -moz-background-size: cover ;
-  -o-background-size: cover ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 
   /* Set a background color that will be displayed
      while the background image is loading */
   background-color: #000000;
-
 }
 
-h1 {
-  margin-top: 10vh;
+div {
+  outline: none;
 }
 
 h1,
@@ -127,6 +122,11 @@ a:visited {
 }
 
 @media only screen and (max-width: 768px) {
+  html,
+  body {
+    height: 100%;
+  }
+
   h1 {
     margin: 0.2rem;
     font-size: xxx-large;

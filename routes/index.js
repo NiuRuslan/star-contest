@@ -3,10 +3,19 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 const Artist = require('../models/artists');
 
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-bajz8.mongodb.net/starcontestNew?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-bajz8.mongodb.net/starcontestNew?retryWrites=true&w=majority`,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+);
 
 function getRandom(max) {
   return Math.floor(Math.random() * Math.floor(max));
+}
+
+function newArtist(data) {
+  const artist = data[getRandom(data.length)];
+  artist.image = artist.images[1].url;
+  return artist;
 }
 
 function mostPopular(artists, data) {
@@ -16,48 +25,40 @@ function mostPopular(artists, data) {
   return artists[1];
 }
 
-function newArtist(data) {
-  const artist = data[getRandom(data.length)];
-  artist.image = artist.images[1].url;
-  return artist;
-}
-
-function newRound(data) {
+function newRound(data, req) {
   const artist1 = newArtist(data);
   const artist2 = newArtist(data);
+  if (artist1.popularity === artist2.popularity) {
+    return newRound(data);
+  }
   const popArtist = mostPopular([artist1, artist2], data);
+  req.app.locals.artist1 = artist1;
+  req.app.locals.artist2 = artist2;
+  req.app.locals.popArtist = popArtist;
+  
   return [artist1, artist2, popArtist];
 }
 
-
 router.get('/', async (req, res, next) => {
-
   req.app.locals.points = 0;
-
-  const data = req.app.locals.data || await Artist.find();
+  const data = req.app.locals.data || (await Artist.find());
   req.app.locals.data = data;
-
-  const game = newRound(data);
-  req.app.locals.artist1 = game[0];
-  req.app.locals.artist2 = game[1];
-  req.app.locals.popArtist = game[2];
+  newRound(data, req);
   res.render('index');
 });
 
 router.post('/', (req, res, next) => {
   let { points, popArtist } = req.app.locals;
   const { data } = req.app.locals;
-
   const artistName = req.body.name;
   console.log(artistName);
   if (artistName === popArtist.name) {
     points += 1;
-    const game = newRound(data);
-    req.app.locals.artist1 = game[0];
-    req.app.locals.artist2 = game[1];
-    req.app.locals.popArtist = game[2];
+    const game = newRound(data, req);
+    const artist1 = { name: game[0].name, image: game[0].image };
+    const artist2 = { name: game[1].name, image: game[1].image };
     req.app.locals.points = points;
-    res.json([game[0], game[1], points]);
+    res.json([artist1, artist2, points]);
   } else {
     req.app.locals.popstar = popArtist.name;
     req.app.locals.followers = popArtist.followers[0].total;
@@ -71,7 +72,7 @@ router.get('/gameover', (req, res, next) => {
   res.render('gameover');
 });
 
-reqUrl = 'https://api.spotify.com/v1/search?q=year:2011&type=artist&limit=50';
+// reqUrl = 'https://api.spotify.com/v1/search?q=year:2011&type=artist&limit=50';
 // // req2Url = 'https://api.spotify.com/v1/search?q=year:2019&type=artist&limit=50%offset=50'
 
 // request(reqUrl, {
@@ -82,7 +83,6 @@ reqUrl = 'https://api.spotify.com/v1/search?q=year:2011&type=artist&limit=50';
 //     let result = await JSON.parse(body);
 //     console.log('body:', result.artists.items); // Print the HTML for the Google homepage.
 //   });
-
 
 // for (let i = 0; i <= 9; i++) {
 //   // const reqUrl = `https://api.spotify.com/v1/search?q=%20genre:%22modern%20rock%22&year:201${i}&type=artist&limit=50&offset=50`;
@@ -131,6 +131,5 @@ reqUrl = 'https://api.spotify.com/v1/search?q=year:2011&type=artist&limit=50';
 //   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
 //   console.log('body:', body); // Print the HTML for the Google homepage.
 // });
-
 
 module.exports = router;
