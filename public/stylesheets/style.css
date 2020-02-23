@@ -139,6 +139,6 @@ a:visited {
   }
 }
 
-div:focus, img:focus {
+div, img {
   outline: none;
 }
