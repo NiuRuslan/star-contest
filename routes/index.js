@@ -18,7 +18,7 @@ function newArtist(data) {
   return artist;
 }
 
-function mostPopular(artists, data) {
+function mostPopular(artists) {
   if (artists[0].popularity > artists[1].popularity) {
     return artists[0];
   }
@@ -35,11 +35,11 @@ function newRound(data, req) {
   req.app.locals.artist1 = artist1;
   req.app.locals.artist2 = artist2;
   req.app.locals.popArtist = popArtist;
-  
+
   return [artist1, artist2, popArtist];
 }
 
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
   req.app.locals.points = 0;
   const data = req.app.locals.data || (await Artist.find());
   req.app.locals.data = data;
@@ -47,11 +47,10 @@ router.get('/', async (req, res, next) => {
   res.render('index');
 });
 
-router.post('/', (req, res, next) => {
-  let { points, popArtist } = req.app.locals;
-  const { data } = req.app.locals;
+router.post('/', (req, res) => {
+  let { points } = req.app.locals;
+  const { data, popArtist } = req.app.locals;
   const artistName = req.body.name;
-  console.log(artistName);
   if (artistName === popArtist.name) {
     points += 1;
     const game = newRound(data, req);
@@ -67,69 +66,8 @@ router.post('/', (req, res, next) => {
   }
 });
 
-router.get('/gameover', (req, res, next) => {
-  console.log(req.app.locals.points);
+router.get('/gameover', (req, res) => {
   res.render('gameover');
 });
-
-// reqUrl = 'https://api.spotify.com/v1/search?q=year:2011&type=artist&limit=50';
-// // req2Url = 'https://api.spotify.com/v1/search?q=year:2019&type=artist&limit=50%offset=50'
-
-// request(reqUrl, {
-//   auth: {'bearer': process.env.TOKEN
-// }}, async (error, response, body) => {
-//     console.error('error:', error); // Print the error if one occurred
-//     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//     let result = await JSON.parse(body);
-//     console.log('body:', result.artists.items); // Print the HTML for the Google homepage.
-//   });
-
-// for (let i = 0; i <= 9; i++) {
-//   // const reqUrl = `https://api.spotify.com/v1/search?q=%20genre:%22modern%20rock%22&year:201${i}&type=artist&limit=50&offset=50`;
-//   const reqUrl = `https://api.spotify.com/v1/search?q=year:201${i}&type=artist&limit=50`;
-//   request(reqUrl, {
-//     auth: { bearer: process.env.TOKEN },
-//   }, async (error, response, body) => {
-//     console.error('error:', error); // Print the error if one occurred
-//     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//     const result = await JSON.parse(body);
-//     // console.log('body:', result.artists.items);
-//     mongoose
-//       .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-bajz8.mongodb.net/starcontestNew?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
-//       .then(async () => {
-//         await Artist.insertMany(result.artists.items, { ordered: false })
-//           .then(() => {
-//             mongoose.connection.close(() => {
-//               console.log('Insert complete. Connection is close.');
-//             });
-//           }).catch(e => e);
-//       });
-//   });
-// }
-
-// const SpotifyWebApi = require('spotify-web-api-node');
-
-// const spotifyApi = new SpotifyWebApi({
-//   clientId: process.env.CLIENT_ID,
-//   clientSecret: process.env.CLIENT_SECRET,
-//   redirectUri: process.env.REDIRECT,
-// });
-
-// spotifyApi.setAccessToken(process.env.TOKEN);
-
-// spotifyApi.searchArtists('Love')
-//   .then((data) => {
-//     console.log('Search artists by "Love"', data.body.artists.items);
-//   }, (err) => {
-//     console.error(err);
-//   });
-//
-/* GET home page. */
-
-// request('http://www.google.com', (error, response, body) => {
-//   console.error('error:', error); // Print the error if one occurred
-//   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//   console.log('body:', body); // Print the HTML for the Google homepage.
-// });
 
 module.exports = router;

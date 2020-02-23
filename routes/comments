@@ -1,0 +1,81 @@
+// reqUrl = 'https://api.spotify.com/v1/search?q=year:2011&type=artist&limit=50';
+// req2Url = 'https://api.spotify.com/v1/search?q=year:2019&type=artist&limit=50%offset=50'
+
+// request(reqUrl, {
+//   auth: {'bearer': process.env.TOKEN
+// }}, async (error, response, body) => {
+//     console.error('error:', error); // Print the error if one occurred
+//     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+//     let result = await JSON.parse(body);
+//     console.log('body:', result.artists.items); // Print the HTML for the Google homepage.
+//   });
+
+// for (let i = 0; i <= 9; i++) {
+//   // const reqUrl = `https://api.spotify.com/v1/search?q=%20genre:%22modern%20rock%22&year:201${i}&type=artist&limit=50&offset=50`;
+//   const reqUrl = `https://api.spotify.com/v1/search?q=year:201${i}&type=artist&limit=50`;
+//   request(reqUrl, {
+//     auth: { bearer: process.env.TOKEN },
+//   }, async (error, response, body) => {
+//     console.error('error:', error); // Print the error if one occurred
+//     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+//     const result = await JSON.parse(body);
+//     // console.log('body:', result.artists.items);
+//     mongoose
+//       .connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0-bajz8.mongodb.net/starcontestNew?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
+//       .then(async () => {
+//         await Artist.insertMany(result.artists.items, { ordered: false })
+//           .then(() => {
+//             mongoose.connection.close(() => {
+//               console.log('Insert complete. Connection is close.');
+//             });
+//           }).catch(e => e);
+//       });
+//   });
+// }
+
+// const SpotifyWebApi = require('spotify-web-api-node');
+
+// const spotifyApi = new SpotifyWebApi({
+//   clientId: process.env.CLIENT_ID,
+//   clientSecret: process.env.CLIENT_SECRET,
+//   redirectUri: process.env.REDIRECT,
+// });
+
+// spotifyApi.setAccessToken(process.env.TOKEN);
+
+// spotifyApi.searchArtists('Love')
+//   .then((data) => {
+//     console.log('Search artists by "Love"', data.body.artists.items);
+//   }, (err) => {
+//     console.error(err);
+//   });
+//
+/* GET home page. */
+
+// from script.js
+
+// fetch(apiUrl)
+//   .then((data) => {
+//     if (data.ok) {
+//       return data.json();
+//     }
+//     throw new Error('Response not ok.');
+//   })
+//   .then((POD) => generateHtml(POD))
+//   .catch((error) => console.error('Error:', error));
+
+// const generateHtml = (data) => {
+//   console.log(data);
+//   // document.body.style = `background: url(${data.hdurl}) #fff no-repeat cover`;
+//   document.body.style = `background-image: url(${data.hdurl})`;
+// };
+
+// fetch('https://api.spotify.com/v1/search?q=year:2019&type=artist', { headers: { Authorization: 'Bearer BQC3uchBhu-lgGy_pdkW48FoGPDKh244F20RUQH9DEfW9aYWYgApqSHNoZQTOjJS3NPsjDPS10WqoYjwc2CpnqUCu1aX7zSf7mpfE6U4dk2RJXbwWqdksX78taLtgPCkOv-EcOmUDIH7pEecua9bZLGchc_y2RX8QpFKnSd4QlVjE8xhTgntFZHse-bUJXv7bCcxJtChWoTpt1_S3jEqlb_SrRo-deoUcBVzDvlh7xB8IggXiQ' } })
+//   .then((data) => {
+//     if (data) {
+//       return data.json();
+//     }
+//     throw new Error('Response not ok.');
+//   })
+//   .then((POD) => console.log(POD.artists.items))
+//   .catch((error) => console.error('Error:', error));
