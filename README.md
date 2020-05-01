@@ -1,2 +1,2 @@
 # star-contest
-little game with NASA and Spotify APIs
+little game with NASA, Spotify and Deezer APIs
