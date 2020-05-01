@@ -7,7 +7,6 @@ const request = require('request');
 
 require('dotenv').config();
 
-
 const indexRouter = require('./routes/index');
 
 const app = express();
@@ -30,7 +29,9 @@ request(process.env.NASAURL, (error, response, body) => {
     app.locals.background = 'https://apod.nasa.gov/apod/image/1805/NGC1532Meunier1024.jpg';
     return;
   }
-  app.locals.background === result.url ? app.locals.background : app.locals.background = result.url;
+  app.locals.background === result.url
+    ? app.locals.background
+    : (app.locals.background = result.url);
 });
 
 app.use('/', indexRouter);

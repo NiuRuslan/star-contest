@@ -13,7 +13,8 @@ async function getPreview(name) {
   const options = {
     method: 'GET',
     url: 'https://deezerdevs-deezer.p.rapidapi.com/search',
-    qs: { q: `artist:"${name}"` },
+    qs: { q: `"${name}"` },
+    // qs: { q: `artist:"${name}"` },
     headers: {
       'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
       'x-rapidapi-key': process.env.DEEZER_KEY,
@@ -71,8 +72,16 @@ router.post('/', async (req, res) => {
   if (artistName === popArtist.name) {
     points += 1;
     const game = await newRound(data, req);
-    const artist1 = { name: game[0].name, image: game[0].image, preview: game[0].preview };
-    const artist2 = { name: game[1].name, image: game[1].image, preview: game[1].preview };
+    const artist1 = {
+      name: game[0].name,
+      image: game[0].image,
+      preview: game[0].preview,
+    };
+    const artist2 = {
+      name: game[1].name,
+      image: game[1].image,
+      preview: game[1].preview,
+    };
     req.app.locals.points = points;
     res.json([artist1, artist2, points]);
   } else {
