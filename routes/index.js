@@ -16,7 +16,7 @@ async function getPreview(name) {
     qs: { q: `artist:"${name}"` },
     headers: {
       'x-rapidapi-host': 'deezerdevs-deezer.p.rapidapi.com',
-      'x-rapidapi-key': 'deaa3b41demshe62baacf17b1f37p12378bjsn88fe297726f5',
+      'x-rapidapi-key': process.env.DEEZER_KEY,
     },
   };
   const info = await request(options);
