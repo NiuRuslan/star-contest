@@ -60,6 +60,20 @@ h6 {
   animation: pulsing 2s infinite;
 }
 
+.pulsingpop:hover {
+  animation: none;
+}
+
+.image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  width: 100%;
+}
+
 .again {
   animation-duration: 3s;
   animation-delay: 1s;
@@ -96,7 +110,7 @@ a:visited {
     -webkit-box-shadow: 0 0 0 0 #e3f2fd66;
   }
   70% {
-    -webkit-box-shadow: 0 0 0 10px #e3f2fd00;
+    -webkit-box-shadow: 0 0 0 20px #e3f2fd00;
   }
   100% {
     -webkit-box-shadow: 0 0 0 0 #e3f2fd00;
@@ -108,8 +122,8 @@ a:visited {
     box-shadow: 0 0 0 0 #e3f2fd66;
   }
   70% {
-    -moz-box-shadow: 0 0 0 10px #e3f2fd00;
-    box-shadow: 0 0 0 10px #e3f2fd00;
+    -moz-box-shadow: 0 0 0 20px #e3f2fd00;
+    box-shadow: 0 0 0 20px #e3f2fd00;
   }
   100% {
     -moz-box-shadow: 0 0 0 0 #e3f2fd00;

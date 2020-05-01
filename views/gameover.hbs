@@ -2,11 +2,15 @@
 
 <h1 class="center-align">{{title}}</h1>
 <div class="row valign-wrapper">
-  <div class="col s12 m12 l4"></div>
-  <div class="col s12 m12 l4" style="justify-content: center; display: flex;">
-    <img src="{{photo}}" alt="{{popstar}}" class="responsive-img pulsingpop">
+  <div class="col s12 m12 l8"></div>
+  <div class="col s12 m6 l2" style="justify-content: center; display: flex;">
+    <div class="circle align-center image pulsingpop" title="{{popstar}}" id="popstar"
+      style="background-image: url({{photo}});"></div>
+    <audio id="popstar_audio" autoplay>
+      <source src="{{preview}}" />
+    </audio>
   </div>
-  <div class="col s12 m12 l4"></div>
+  <div class="col s12 m12 l8"></div>
 </div>
 
 

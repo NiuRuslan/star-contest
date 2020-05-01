@@ -16,6 +16,7 @@ const ArtistSchema = new mongoose.Schema({
   },
   followers: Array,
   images: Array,
+  preview: String,
 }, {
   versionKey: false,
 }, {
