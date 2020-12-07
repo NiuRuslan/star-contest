@@ -40,7 +40,9 @@ document.body
   });
 
 function playAudio(id) {
-  document.getElementById(`${id}_audio`).play();
+  const music = document.getElementById(`${id}_audio`);
+  music.volume = 0.5;
+  music.play();
 }
 
 function pauseAudio(id) {
