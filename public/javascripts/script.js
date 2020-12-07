@@ -41,7 +41,7 @@ document.body
 
 function playAudio(id) {
   const music = document.getElementById(`${id}_audio`);
-  music.volume = 0.5;
+  music.volume = 0.25;
   music.play();
 }
 
